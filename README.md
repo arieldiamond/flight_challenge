@@ -1,4 +1,4 @@
-# Spartz Coding Challenge
+# Coding Challenge
 
 ## Build A Simple REST API
 
