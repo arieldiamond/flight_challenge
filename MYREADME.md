@@ -16,16 +16,16 @@ I decided to use Flight, as it was lightweight, easy to learn in a week, and the
 
 
 HOW TO RUN IT
-This application works through the browser. When you run it locally (I used MAMP), and you type in 'localhost:8888/spartz-home/', you see a message saying hello.
+This application works through the browser. When you run it locally (I used MAMP), and you type in 'localhost:8888/flight_challenge/', you see a message saying hello.
 
 ENDPOINT 1:
-If you type '/spartz-home/v1/states/VT/cities', you will see a list of all of the cities in Vermont (which is also where I am from). If you type in '/spartz-home/v1/states/IL/cities', you will see all of the cities in Illinois. It is case-insensitive. If you type in an unrecognized state, you will get an error. 
+If you type '/flight_challenge/v1/states/VT/cities', you will see a list of all of the cities in Vermont (which is also where I am from). If you type in '/flight_challenge/v1/states/IL/cities', you will see all of the cities in Illinois. It is case-insensitive. If you type in an unrecognized state, you will get an error. 
 
 ENDPOINT 2:
-To find the cities nearest other cities, you enter '/spartz-home/v1/states/VT/cities/9425?radius=100', '/spartz-home/v1/states/VT/cities/Brattleboro?radius=100' or any city and radius combination. I tried both the Haversine and Vicenty formulas for distance, I stuck with Vicenty as it is said to be more accurate. It accepts city ids or city names and states, and is case-insensitive. 
+To find the cities nearest other cities, you enter '/flight_challenge/v1/states/VT/cities/9425?radius=100', '/flight_challenge/v1/states/VT/cities/Brattleboro?radius=100' or any city and radius combination. I tried both the Haversine and Vicenty formulas for distance, I stuck with Vicenty as it is said to be more accurate. It accepts city ids or city names and states, and is case-insensitive. 
 
 ENDPOINT 3:
-When you go to '/spartz-home/v1/users/8/visits' you will see a JSON object containing visited cities. I originally had the URL able to accept the user's first name in addition to the ID, but that does not work for duplicates. I also originally used a form to submit the data, but ended up using cURL. If you enter http://localhost:8888/spartz-home/v1/users/1/visits?name=rockford&state=IL and press enter, the page reloads and the new visited city is appended to the JSON array. If you enter an invalid city/state combination, you get an error.
+When you go to '/flight_challenge/v1/users/8/visits' you will see a JSON object containing visited cities. I originally had the URL able to accept the user's first name in addition to the ID, but that does not work for duplicates. I also originally used a form to submit the data, but ended up using cURL. If you enter http://localhost:8888/flight_challenge/v1/users/1/visits?name=rockford&state=IL and press enter, the page reloads and the new visited city is appended to the JSON array. If you enter an invalid city/state combination, you get an error.
 
 ENDPOINT 4: When you return to the user page after submitting the form, you will see that '{"id":"2249","name":"Chicago","state":"IL","status":"verified","latitude":"41.884150000000000","longitude":"-87.632409000000000"}' is listed as a visited city. When you look at the 'visits.csv' file, you see that there is a new line 'id,8,2249'. There is currently no filter for duplicate entries and that would be something I would want to add.
 

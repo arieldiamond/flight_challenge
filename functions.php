@@ -65,7 +65,7 @@ function find_city_by_id($cityfile, $city_sought_id) {
 	if (isset($current_city)) {
 		return $current_city;
 	} else {
-		echo '<strong>That city does not exist in our system, please try again. <br><a href="/spartz-home/v1/users/'.$user.'/visits">Back</a></strong>';
+		echo '<strong>That city does not exist in our system, please try again. <br><a href="/flight_challenge/v1/users/'.$user.'/visits">Back</a></strong>';
 	}
 }
 
@@ -143,7 +143,7 @@ function curl_post_json($user, $city, $state){
 		    'name' => $city,
 		    'state' => strtoupper($state)
 		);
-		$ch = curl_init('http://localhost:8888/spartz-home/v1/users/'.$user.'/visits');
+		$ch = curl_init('http://localhost:8888/flight_challenge/v1/users/'.$user.'/visits');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 		curl_setopt($ch, CURLOPT_POST, 1);
@@ -187,11 +187,10 @@ function visited_cities($visitfile, $cityfile, $user_id) {
 	}
 
 	if(count($visited_cities) > 0) {
-		// For UI
-		// echo '<h3>Your Visited Cities:</h3>';
-		// foreach ($visited_cities as $visited_city) {
-		// 	echo $visited_city->name.", ".$visited_city->state."<br>";
-		// }
+		echo '<h3>Your Visited Cities:</h3>';
+		foreach ($visited_cities as $visited_city) {
+			echo $visited_city->name.", ".$visited_city->state."<br>";
+		}
 		return $visited_cities;
 	} else {
 		echo 'It looks like you haven\'t visited any cities yet!';

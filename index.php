@@ -1,14 +1,21 @@
 <?php
 header('Content-Type: text/html, charset=utf-8');
 require 'flight-master/flight/Flight.php';
-include 'controllers.php';
+// include 'controllers.php';
 include 'functions.php';
 include 'ChromePhp.php';
+// include 'oo.php';
 
 //Home
 Flight::route('/', function(){
-    echo 'Hello Spartz!';
+  Flight::render('hello.php');
 	ChromePhp::log('I used ChromePhp for troubleshooting.');
+});
+
+// List all states
+Flight::route('/v1/states/', function(){
+  Flight::render('states.php');
+	
 });
 
 // List cities from a certain state
@@ -53,7 +60,7 @@ Flight::route('GET /v1/users/@user/visits', function($user){
 		$user_id = $current_user->id;
 
 		// While I was developing, I used a form for the ease of UI in order to send to the POST. 
-		// echo '<form action="/spartz-home/v1/users/'.$user_id.'/visits" method="POST">
+		// echo '<form action="/flight_challenge/v1/users/'.$user_id.'/visits" method="POST">
 		// 	City: <input type="text" name="name"><br>
 		// 	State: <input type="text" name="state"><br>
 		// 	<input type="submit" value="Submit">
